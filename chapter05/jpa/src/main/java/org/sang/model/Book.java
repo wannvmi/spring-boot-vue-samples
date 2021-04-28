@@ -1,10 +1,13 @@
 package org.sang.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 /**
  * Created by sang on 2018/7/15.
  */
+@Proxy(lazy = false)
 @Entity(name = "t_book")
 public class Book {
     @Id

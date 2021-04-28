@@ -23,6 +23,8 @@ public class FileUploadController {
     @PostMapping("/upload")
     public String upload(MultipartFile file, HttpServletRequest req) {
         String format = sdf.format(new Date());
+        Date date1 = new Date();
+
         String realPath = req.getServletContext().getRealPath("/img") + format;
         File folder = new File(realPath);
         if (!folder.exists()) {
@@ -30,6 +32,8 @@ public class FileUploadController {
         }
         String oldName = file.getOriginalFilename();
         String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf("."));
+        System.out.println("" + folder);
+
         try {
             file.transferTo(new File(folder, newName));
             String url = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/img" + format + newName;

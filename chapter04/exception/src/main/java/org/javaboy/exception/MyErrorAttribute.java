@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
 
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @Author 江南一点雨
@@ -16,6 +17,7 @@ public class MyErrorAttribute extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
         Map<String, Object> map = super.getErrorAttributes(webRequest, includeStackTrace);
         map.put("myerror", "这是我自定义的异常信息！");
+        map.put("ts", UUID.randomUUID().toString());
         return map;
     }
 }

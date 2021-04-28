@@ -12,9 +12,10 @@ public class XmlApplicationTests {
 
     @Autowired
     SayHello sayHello;
+
     @Test
     public void contextLoads() {
-        System.out.println(sayHello.sayHello());
+//        System.out.println(sayHello.sayHello());
     }
 
 }

@@ -19,7 +19,7 @@ public class LogComponent {
     @Before(value = "pc1()")
     public void before(JoinPoint jp) {
         String name = jp.getSignature().getName();
-        System.out.println("before--" + name);
+        System.out.println("before--" + jp.getSignature().getDeclaringType().getName() + name);
     }
 
     @After(value = "pc1()")
@@ -34,10 +34,10 @@ public class LogComponent {
         System.out.println("afterReturning----" + name + "-----" + result);
     }
 
-    @AfterThrowing(value = "pc1()",throwing = "e")
-    public void afterThrowing(JoinPoint jp,Exception e) {
+    @AfterThrowing(value = "pc1()", throwing = "e")
+    public void afterThrowing(JoinPoint jp, Exception e) {
         String name = jp.getSignature().getName();
-        System.out.println("afterThrowing---"+name+"----"+e.getMessage());
+        System.out.println("afterThrowing---" + name + "----" + e.getMessage());
     }
 
     @Around("pc1()")
